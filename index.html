@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>relativity-I — разработчик и автор KrackenTap</title>
+<style>
+:root{--bg:#f4f8fb;--card:#fff;--ink:#12212e;--mute:#587084;--acc:#0e7c86;--acc2:#e4572e;--line:#d6e2ea;--hero1:#0b3c5d;--hero2:#0e7c86;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1620;--card:#13222f;--ink:#e6eff5;--mute:#8fa8b9;--acc:#3fc1c9;--acc2:#ff7a52;--line:#23394a;--hero1:#06202f;--hero2:#0a4a55}}
+:root[data-theme="dark"]{--bg:#0c1620;--card:#13222f;--ink:#e6eff5;--mute:#8fa8b9;--acc:#3fc1c9;--acc2:#ff7a52;--line:#23394a;--hero1:#06202f;--hero2:#0a4a55}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.w{max-width:860px;margin:0 auto;padding:0 18px}
+header{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+header:after{content:"🦑";position:absolute;right:-10px;bottom:-30px;font-size:150px;opacity:.15;transform:rotate(-12deg)}
+.tag{display:inline-block;font:600 12px ui-monospace,Menlo,monospace;background:rgba(255,255,255,.16);padding:4px 10px;border-radius:99px;letter-spacing:.5px}
+h1{font-size:clamp(34px,8vw,54px);margin:14px 0 6px;letter-spacing:-1px}
+header p{margin:0;max-width:520px;opacity:.9;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+a.b{display:inline-block;padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px}
+a.b.p{background:var(--acc2);color:#fff}
+a.b.s{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)}
+section{padding:34px 0 6px}
+h2{font-size:26px;margin:0 0 14px;letter-spacing:-.5px}
+h2 small{font-size:14px;color:var(--mute);font-weight:500;margin-left:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.proj{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.ico{font-size:44px;line-height:1;background:var(--bg);border-radius:14px;padding:12px}
+.proj h3{margin:0 0 4px;font-size:21px}
+.proj p{margin:0 0 10px;color:var(--mute)}
+.chip{display:inline-block;font:600 12px ui-monospace,monospace;color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:2px 9px;margin-right:6px}
+.proj a{color:var(--acc2);font-weight:600;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.stats div{text-align:center;padding:12px 4px}
+.stats b{display:block;font-size:24px;color:var(--acc)}
+.stats span{font-size:12px;color:var(--mute)}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;padding-top:calc(10px + env(safe-area-inset-top,0px));margin-top:-10px}
+body:before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
+input{width:100%;font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+input:focus{outline:2px solid var(--acc);border-color:transparent}
+.f{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px}
+.f button{flex:none;font:600 13px inherit;font-family:inherit;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.f button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:8px}
+.t{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.t em{font:600 11px ui-monospace,monospace;color:var(--acc2);text-transform:uppercase;font-style:normal;letter-spacing:.6px}
+.t h4{margin:3px 0 4px;font-size:16px}
+.t p{margin:0;font-size:14px;color:var(--mute)}
+#no{display:none;text-align:center;color:var(--mute);padding:24px}
+footer{margin-top:40px;padding:22px 0;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:13px}
+footer a{color:var(--acc)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lang{display:flex;gap:4px}
+.lang button{font:700 12px inherit;font-family:inherit;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:5px 11px;cursor:pointer}
+.lang button.on{background:#fff;color:var(--hero1)}
+</style>
+</head>
+<body>
+<header><div class="w">
+<div class="top"><span class="tag" data-i="tag"></span><div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div></div>
+<h1>relativity-I</h1>
+<p data-i="sub"></p>
+<div class="cta">
+<a class="b p" href="https://github.com/relativity-I/KrackenTap" data-i="b1"></a>
+<a class="b s" href="https://github.com/relativity-I" data-i="b2"></a>
+<a class="b s" href="#gloss" data-i="b3"></a>
+</div>
+</div></header>
+
+<main class="w">
+<section>
+<h2 data-i="projT"></h2>
+<div class="card proj">
+<div class="ico">🐙</div>
+<div style="flex:1;min-width:200px">
+<h3>KrackenTap</h3>
+<p data-i="projD"></p>
+<span class="chip">Java</span><span class="chip">Game</span><span class="chip">Open source</span>
+<div style="margin-top:12px"><a href="https://github.com/relativity-I/KrackenTap" data-i="open"></a></div>
+</div>
+</div>
+<div class="stats">
+<div class="card"><b>1</b><span data-i="st1"></span></div>
+<div class="card"><b>Java</b><span data-i="st2"></span></div>
+<div class="card"><b id="n">0</b><span data-i="st3"></span></div>
+</div>
+</section>
+
+<section id="gloss">
+<h2 data-i="glT"></h2>
+<div class="bar">
+<input id="q" type="search" aria-label="Search">
+<div class="f" id="f"></div>
+</div>
+<div class="g" id="g"></div>
+<div id="no"></div>
+</section>
+</main>
+
+<footer><div class="w">© 2026 relativity-I · <a href="https://github.com/relativity-I">github.com/relativity-I</a></div></footer>
+
+<script>
+var T=[
+["Основы","Переменная","Именованная ячейка памяти для хранения значения, которое может меняться."],
+["Основы","Константа","Значение, которое задаётся один раз и не меняется (в Java — final)."],
+["Основы","Тип данных","Определяет, какие значения может хранить переменная: int, double, boolean, String."],
+["Основы","Функция / метод","Именованный блок кода, который можно вызывать многократно, передавая параметры."],
+["Основы","Цикл","Конструкция для повторения кода: for, while, do-while."],
+["Основы","Условие","Ветвление логики через if/else и switch в зависимости от выражения."],
+["Основы","Рекурсия","Когда функция вызывает саму себя. Нужно базовое условие выхода, иначе будет переполнение стека."],
+["Основы","Алгоритм","Пошаговая инструкция решения задачи. Оценивается по времени и памяти."],
+["Основы","Big O","Нотация, описывающая рост времени или памяти алгоритма с ростом входных данных: O(1), O(n), O(n²)."],
+["Основы","Отладка (debug)","Поиск и исправление ошибок с помощью брейкпоинтов, логов и пошагового выполнения."],
+["Основы","Исключение","Ошибка во время выполнения. Обрабатывается через try/catch, чтобы программа не падала."],
+["Основы","Компиляция","Перевод исходного кода в машинный код или байткод до запуска программы."],
+["Структуры данных","Массив","Набор элементов одного типа с доступом по индексу. Быстрое чтение, фиксированный размер."],
+["Структуры данных","Список (List)","Динамическая коллекция элементов. В Java: ArrayList, LinkedList."],
+["Структуры данных","Хэш-таблица / Map","Хранит пары «ключ → значение» с быстрым поиском. В Java: HashMap."],
+["Структуры данных","Set (множество)","Коллекция уникальных элементов без дубликатов: HashSet, TreeSet."],
+["Структуры данных","Стек","Структура LIFO: последний пришёл — первый вышел. Операции push и pop."],
+["Структуры данных","Очередь","Структура FIFO: первый пришёл — первый вышел. Используется в задачах и событиях."],
+["Структуры данных","Дерево","Иерархическая структура из узлов. Бинарное дерево поиска ускоряет поиск до O(log n)."],
+["Структуры данных","Граф","Набор вершин и рёбер между ними. Моделирует карты, сети и связи."],
+["Java и ООП","JVM","Java Virtual Machine — виртуальная машина, исполняющая Java-байткод на любой платформе."],
+["Java и ООП","JDK / JRE","JDK — набор для разработки (компилятор, инструменты), JRE — среда для запуска программ."],
+["Java и ООП","ООП","Объектно-ориентированное программирование: код организован вокруг объектов и классов."],
+["Java и ООП","Класс и объект","Класс — шаблон, объект — его экземпляр с собственными данными."],
+["Java и ООП","Наследование","Класс перенимает поля и методы родителя (extends) и может их расширять."],
+["Java и ООП","Полиморфизм","Один интерфейс — разные реализации. Объекты разных классов отвечают на один вызов по-своему."],
+["Java и ООП","Инкапсуляция","Скрытие внутренних данных объекта и доступ к ним через методы (private + геттеры)."],
+["Java и ООП","Интерфейс","Контракт, описывающий методы, которые класс обязан реализовать."],
+["Java и ООП","Garbage Collector","Автоматическая сборка мусора: освобождение памяти от объектов, на которые нет ссылок."],
+["Java и ООП","Maven / Gradle","Системы сборки: управляют зависимостями, компилируют и упаковывают Java-проекты."],
+["Java и ООП","Generics","Обобщения: классы и методы, работающие с разными типами безопасно, например List&lt;String&gt;."],
+["Java и ООП","Lambda","Короткая анонимная функция. Используется со Stream API и обработчиками событий."],
+["Игры","Game Loop","Главный цикл игры: обработка ввода → обновление состояния → отрисовка."],
+["Игры","FPS","Кадров в секунду. 60 FPS считается плавной игрой."],
+["Игры","Sprite","Двумерное изображение персонажа или объекта в игре."],
+["Игры","Hitbox","Невидимая область объекта для проверки столкновений и попаданий (тапа по Кракену)."],
+["Игры","Collision Detection","Определение пересечений объектов: прямоугольников, кругов, пикселей."],
+["Игры","Delta Time","Время между кадрами. Нужно, чтобы скорость игры не зависела от мощности устройства."],
+["Игры","Игровой движок","Готовая основа для игр: графика, физика, звук. Например Unity, Godot, libGDX."],
+["Игры","Геймплей-луп","Повторяющийся цикл действий игрока: тап → награда → апгрейд → снова тап."],
+["Веб и сети","HTTP / HTTPS","Протокол обмена данными в вебе. HTTPS добавляет шифрование."],
+["Веб и сети","API","Набор правил взаимодействия программ. REST API передаёт данные через HTTP в формате JSON."],
+["Веб и сети","JSON","Текстовый формат данных из пар «ключ-значение». Основа общения клиента с сервером."],
+["Веб и сети","WebSocket","Постоянное двустороннее соединение для чатов и онлайн-игр в реальном времени."],
+["Веб и сети","DNS","Система, превращающая доменные имена в IP-адреса."],
+["Веб и сети","Фронтенд / Бэкенд","Фронтенд — то, что видит пользователь. Бэкенд — сервер, базы данных и логика."],
+["Веб и сети","SQL / База данных","Язык запросов к реляционным базам (SELECT, INSERT, JOIN) для хранения данных."],
+["Инструменты","Git","Система контроля версий: хранит историю изменений и позволяет работать в команде."],
+["Инструменты","Commit / Push","Commit фиксирует изменения локально, push отправляет их на GitHub."],
+["Инструменты","Branch","Ветка разработки: изолированная копия кода для новой функции или исправления."],
+["Инструменты","Pull Request","Запрос на слияние ветки в основную с обсуждением и ревью кода."],
+["Инструменты","Issue","Задача или баг-репорт в репозитории на GitHub."],
+["Инструменты","README","Файл-визитка проекта: что это, как запустить, как внести вклад."],
+["Инструменты","IDE","Среда разработки с редактором, отладчиком и сборкой: IntelliJ IDEA, VS Code, Android Studio."],
+["Инструменты","CI/CD","Автоматическая сборка, тестирование и выкладка кода при каждом изменении (GitHub Actions)."],
+["Практики","Рефакторинг","Улучшение структуры кода без изменения поведения."],
+["Практики","Технический долг","Быстрые, но неидеальные решения, которые потом замедляют разработку."],
+["Практики","Unit-тест","Автоматическая проверка маленького куска кода: метода или класса (JUnit в Java)."],
+["Практики","Code Review","Проверка кода коллегами перед слиянием. Ловит баги и улучшает качество."],
+["Практики","DRY / KISS","DRY — не повторяйся. KISS — делай проще. Базовые принципы чистого кода."],
+["Практики","SOLID","Пять принципов проектирования ООП-кода, делающих его гибким и поддерживаемым."],
+["Практики","MVP","Минимально жизнеспособный продукт: ключевые функции для быстрой проверки идеи."],
+["Практики","Agile / Scrum","Гибкая разработка короткими спринтами с частыми релизами."],
+["Мобайл","SDK","Набор инструментов и библиотек для разработки под платформу."],
+["Мобайл","APK / IPA","Файлы готовых приложений для Android и iOS."],
+["Мобайл","Нативная разработка","Приложения на родных языках платформы: Kotlin/Java для Android, Swift для iOS."],
+["Мобайл","Кроссплатформа","Один код для iOS и Android: Flutter, React Native."],
+["Мобайл","Push-уведомления","Сообщения от сервера на устройство, даже когда приложение закрыто."],
+["Мобайл","Офлайн-режим","Работа без интернета через локальную базу и кэш."],
+["Мобайл","Холодный старт","Запуск приложения с нуля, когда его нет в памяти."],
+["Мобайл","Фича-флаг","Переключатель функции без нового релиза."],
+["Мобайл","Монетизация (IAP)","Встроенные покупки и подписки в приложении."],
+["Мобайл","ASO","Оптимизация страницы приложения в магазине для роста установок."]
+];
+var E=[
+"Named memory cell that stores a value which can change.",
+"A value set once that never changes (final in Java).",
+"Defines which values a variable can hold: int, double, boolean, String.",
+"A named block of code you can call many times with parameters.",
+"Repeats code: for, while, do-while.",
+"Branches logic with if/else and switch.",
+"A function calling itself. Needs a base case or the stack overflows.",
+"Step-by-step recipe for solving a task, judged by time and memory.",
+"Notation for how an algorithm's time or memory grows with input: O(1), O(n), O(n²).",
+"Finding and fixing bugs with breakpoints, logs and step-by-step execution.",
+"A runtime error. Handled with try/catch so the program doesn't crash.",
+"Turning source code into machine code or bytecode before running.",
+"Elements of one type accessed by index. Fast reads, fixed size.",
+"Dynamic collection of elements. In Java: ArrayList, LinkedList.",
+"Stores key → value pairs with fast lookup. In Java: HashMap.",
+"Collection of unique elements, no duplicates: HashSet, TreeSet.",
+"LIFO: last in, first out. Operations push and pop.",
+"FIFO: first in, first out. Used for tasks and events.",
+"Hierarchy of nodes. A binary search tree finds items in O(log n).",
+"Vertices connected by edges. Models maps, networks and relations.",
+"Java Virtual Machine: runs Java bytecode on any platform.",
+"JDK is the development kit (compiler, tools), JRE is the runtime for programs.",
+"Object-oriented programming: code is organized around objects and classes.",
+"A class is a blueprint, an object is its instance with its own data.",
+"A class inherits fields and methods from a parent (extends) and can extend them.",
+"One interface, many implementations. Different objects answer one call differently.",
+"Hiding an object's internals and exposing them via methods (private + getters).",
+"A contract listing methods a class must implement.",
+"Automatically frees memory of objects that nothing references.",
+"Build systems: manage dependencies, compile and package Java projects.",
+"Classes and methods that work safely with different types, e.g. List&lt;String&gt;.",
+"A short anonymous function. Used with Stream API and event handlers.",
+"Main game cycle: handle input → update state → render.",
+"Frames per second. 60 FPS is considered smooth.",
+"A 2D image of a character or object in a game.",
+"Invisible area of an object for checking collisions and hits (a tap on the Kraken).",
+"Detecting overlaps between objects: rectangles, circles, pixels.",
+"Time between frames. Keeps game speed independent of device power.",
+"Ready-made game foundation: graphics, physics, sound. E.g. Unity, Godot, libGDX.",
+"The player's repeating cycle: tap → reward → upgrade → tap again.",
+"Web data protocol. HTTPS adds encryption.",
+"Rules for programs to talk to each other. REST API moves data over HTTP as JSON.",
+"Text data format of key-value pairs. Basis of client–server talk.",
+"Persistent two-way connection for chats and real-time online games.",
+"Turns domain names into IP addresses.",
+"Frontend is what users see. Backend is the server, databases and logic.",
+"Query language for relational databases (SELECT, INSERT, JOIN).",
+"Version control: stores change history and enables teamwork.",
+"Commit saves changes locally, push sends them to GitHub.",
+"A line of development: an isolated copy of code for a feature or fix.",
+"A request to merge a branch into the main one, with discussion and review.",
+"A task or bug report in a GitHub repository.",
+"A project's business card: what it is, how to run it, how to contribute.",
+"Development environment with editor, debugger and build: IntelliJ IDEA, VS Code, Android Studio.",
+"Automatic build, test and deploy on every change (GitHub Actions).",
+"Improving code structure without changing behavior.",
+"Quick but imperfect solutions that slow development later.",
+"Automatic check of a small piece of code: a method or class (JUnit in Java).",
+"Teammates check code before merging. Catches bugs and raises quality.",
+"DRY: don't repeat yourself. KISS: keep it simple. Core clean-code principles.",
+"Five OOP design principles that keep code flexible and maintainable.",
+"Minimum viable product: key features to test an idea quickly.",
+"Flexible development in short sprints with frequent releases.",
+"Tools and libraries for developing on a platform.",
+"Ready app files for Android and iOS.",
+"Apps in the platform's own language: Kotlin/Java for Android, Swift for iOS.",
+"One codebase for iOS and Android: Flutter, React Native.",
+"Server messages to a device even when the app is closed.",
+"Working without internet via a local database and cache.",
+"Launching the app from scratch when it isn't in memory.",
+"A switch for a feature without a new release.",
+"In-app purchases and subscriptions.",
+"Optimizing an app's store page to grow installs."
+];
+var TT={"Переменная":"Variable","Константа":"Constant","Тип данных":"Data type","Функция / метод":"Function / method","Цикл":"Loop","Условие":"Conditional","Рекурсия":"Recursion","Алгоритм":"Algorithm","Отладка (debug)":"Debugging","Исключение":"Exception","Компиляция":"Compilation","Массив":"Array","Список (List)":"List","Хэш-таблица / Map":"Hash table / Map","Set (множество)":"Set","Стек":"Stack","Очередь":"Queue","Дерево":"Tree","Граф":"Graph","ООП":"OOP","Класс и объект":"Class and object","Наследование":"Inheritance","Полиморфизм":"Polymorphism","Инкапсуляция":"Encapsulation","Интерфейс":"Interface","Игровой движок":"Game engine","Геймплей-луп":"Gameplay loop","Фронтенд / Бэкенд":"Frontend / Backend","SQL / База данных":"SQL / Database","Рефакторинг":"Refactoring","Технический долг":"Technical debt","Unit-тест":"Unit test","Нативная разработка":"Native development","Кроссплатформа":"Cross-platform","Push-уведомления":"Push notifications","Офлайн-режим":"Offline mode","Холодный старт":"Cold start","Фича-флаг":"Feature flag","Монетизация (IAP)":"Monetization (IAP)"};
+var H="ПК: железо",S="ПК: настройки";
+var P=[
+[H,"Процессор (CPU)","Мозг компьютера: выполняет инструкции. Важны ядра, потоки и частота.","CPU (processor)","The computer's brain: executes instructions. Cores, threads and clock speed matter."],
+[H,"Видеокарта (GPU)","Рисует картинку в играх и считает графику. Главный компонент для FPS.","Graphics card (GPU)","Renders game graphics. The main component for FPS."],
+[H,"Оперативная память (RAM)","Быстрая временная память для запущенных программ. Для игр сейчас комфортно 16–32 ГБ.","RAM","Fast temporary memory for running programs. 16–32 GB is comfortable for games today."],
+[H,"Видеопамять (VRAM)","Память самой видеокарты для текстур и кадров. Мало VRAM — просадки в играх.","VRAM","The graphics card's own memory for textures and frames. Too little causes stutter."],
+[H,"SSD","Быстрый накопитель без движущихся частей. Игры и система грузятся в разы быстрее, чем с HDD.","SSD","Fast storage with no moving parts. Games and the OS load far faster than from an HDD."],
+[H,"HDD","Жёсткий диск с вращающимися пластинами. Дёшево и ёмко, но медленно.","HDD","Spinning-platter drive. Cheap and roomy but slow."],
+[H,"NVMe / M.2","Самые быстрые SSD, подключаются через слот M.2 по шине PCIe.","NVMe / M.2","The fastest SSDs, plugged into an M.2 slot over PCIe."],
+[H,"Материнская плата","Плата, соединяющая все комплектующие. Определяет сокет, тип памяти и порты.","Motherboard","The board linking all components. Sets socket, memory type and ports."],
+[H,"Сокет","Разъём под процессор (AM5, LGA1700…). Процессор должен подходить к плате.","Socket","The CPU slot (AM5, LGA1700…). CPU and board must match."],
+[H,"Чипсет","Набор микросхем платы: определяет возможности — разгон, число портов и линий PCIe.","Chipset","The board's chip set: defines features like overclocking and the number of ports and PCIe lanes."],
+[H,"Блок питания (БП)","Питает все компоненты. Берите с запасом по мощности и сертификатом 80+.","Power supply (PSU)","Powers all components. Pick one with headroom and an 80+ rating."],
+[H,"Охлаждение (кулер / СЖО)","Отводит тепло от процессора и видеокарты. Бывает воздушное и жидкостное (СЖО).","Cooling (air / AIO)","Removes heat from CPU and GPU. Air or liquid (AIO)."],
+[H,"Термопаста","Прослойка между чипом и кулером для лучшей передачи тепла. Со временем сохнет.","Thermal paste","A layer between chip and cooler for better heat transfer. Dries out over time."],
+[H,"DDR4 / DDR5","Поколения оперативной памяти. Не совместимы между собой по слоту.","DDR4 / DDR5","RAM generations. Slots are not interchangeable."],
+[H,"Кэш процессора","Сверхбыстрая память внутри CPU (L1, L2, L3). Большой кэш заметно ускоряет игры.","CPU cache","Ultra-fast memory inside the CPU (L1, L2, L3). A big cache noticeably speeds up games."],
+[H,"Ядра и потоки","Ядро — отдельный «мини-процессор», поток — виртуальное деление ядра для параллельной работы.","Cores and threads","A core is a separate mini-processor; a thread is a virtual split of a core for parallel work."],
+[H,"TDP","Расчётное тепловыделение в ваттах. Подсказывает, какое охлаждение нужно.","TDP","Thermal design power in watts. A hint for the cooling you need."],
+[H,"PCIe","Шина для видеокарты, NVMe и плат расширения. Версии 4.0 и 5.0 быстрее предыдущих.","PCIe","Bus for the GPU, NVMe drives and add-in cards. 4.0 and 5.0 are faster."],
+[H,"BIOS / UEFI","Прошивка платы: здесь настраивают разгон, XMP и порядок загрузки.","BIOS / UEFI","Board firmware: where you set overclocking, XMP and boot order."],
+[S,"XMP / EXPO","Профиль, включающий заявленную скорость памяти. Без него RAM работает на медленной базовой частоте.","XMP / EXPO","A profile that enables the memory's rated speed. Without it RAM runs at slow default speed."],
+[S,"Разгон (overclocking)","Повышение частот CPU, GPU или памяти выше заводских ради FPS. Растут нагрев и риск нестабильности.","Overclocking","Raising CPU, GPU or memory clocks above stock for more FPS. Heat and instability risk grow."],
+[S,"Андервольт","Снижение напряжения при той же частоте: меньше нагрев и шум, часто без потери FPS.","Undervolt","Lowering voltage at the same clocks: less heat and noise, often with no FPS loss."],
+[S,"G-Sync","Технология NVIDIA: монитор подстраивает частоту под FPS, убирая разрывы картинки.","G-Sync","NVIDIA tech: the monitor matches its refresh rate to FPS, removing tearing."],
+[S,"FreeSync","Аналог G-Sync от AMD. Работает на большинстве современных мониторов.","FreeSync","AMD's counterpart to G-Sync. Works on most modern monitors."],
+[S,"VRR","Variable Refresh Rate — переменная частота обновления. Общее название для G-Sync и FreeSync.","VRR","Variable Refresh Rate. The umbrella name for G-Sync and FreeSync."],
+[S,"V-Sync","Вертикальная синхронизация: убирает разрывы, но добавляет задержку ввода.","V-Sync","Vertical sync: removes tearing but adds input lag."],
+[S,"Разрыв кадра (tearing)","Картинка «рвётся» по горизонтали, когда FPS не совпадает с частотой монитора.","Screen tearing","The image splits horizontally when FPS doesn't match the monitor's refresh rate."],
+[S,"FPS","Кадры в секунду. Чем больше, тем плавнее картинка и отзывчивее игра.","FPS","Frames per second. More means a smoother picture and a more responsive game."],
+[S,"Герцы (Hz)","Частота обновления монитора: 60, 144, 240 раз в секунду. Выше — плавнее.","Refresh rate (Hz)","How many times per second the monitor redraws: 60, 144, 240. Higher is smoother."],
+[S,"DPI / CPI","Чувствительность мыши: сколько пикселей проходит курсор на дюйм движения.","DPI / CPI","Mouse sensitivity: how many pixels the cursor moves per inch of travel."],
+[S,"Polling rate","Как часто мышь сообщает ПК своё положение: 125–8000 Гц. Больше — меньше задержка.","Polling rate","How often the mouse reports position to the PC: 125–8000 Hz. Higher means less delay."],
+[S,"Input lag","Задержка между действием (клик, движение) и реакцией на экране.","Input lag","Delay between your action (click, move) and the reaction on screen."],
+[S,"Пинг (ping)","Время отклика сервера в мс. Низкий пинг важен для онлайн-игр.","Ping","Server response time in ms. Low ping matters in online games."],
+[S,"Frame time / 1% low","Время рендера кадра и худшие 1% кадров. Показывают микрофризы лучше среднего FPS.","Frame time / 1% low","Per-frame render time and the worst 1% of frames. Shows stutter better than average FPS."],
+[S,"Resizable BAR","Даёт процессору полный доступ к видеопамяти. В некоторых играх добавляет несколько % FPS.","Resizable BAR","Gives the CPU full access to VRAM. Adds a few % FPS in some games."],
+[S,"DLSS / FSR / XeSS","Апскейлинг: игра рендерится в меньшем разрешении, затем умно увеличивается. Больше FPS.","DLSS / FSR / XeSS","Upscaling: the game renders at lower resolution and is smartly enlarged. More FPS."],
+[S,"Frame Generation","Нейросеть достраивает промежуточные кадры. FPS растёт, но задержка тоже.","Frame Generation","AI creates in-between frames. FPS rises, but so does latency."],
+[S,"Трассировка лучей","Реалистичный свет и отражения. Красиво, но сильно нагружает видеокарту.","Ray tracing","Realistic light and reflections. Beautiful but heavy on the GPU."],
+[S,"HDR","Расширенный диапазон яркости и цвета на мониторе.","HDR","Wider brightness and color range on the display."],
+[S,"Разрешение","Число пикселей: 1080p, 1440p, 4K. Чем больше, тем выше нагрузка на видеокарту.","Resolution","Pixel count: 1080p, 1440p, 4K. Higher means more GPU load."],
+[S,"Троттлинг","Автоматическое снижение частот из-за перегрева или нехватки питания.","Throttling","Automatic clock reduction due to overheating or insufficient power."],
+[S,"Bottleneck","«Бутылочное горлышко»: один компонент (например, слабый CPU) не даёт раскрыться другому.","Bottleneck","When one part (e.g. a weak CPU) holds back another."],
+[S,"Бенчмарк / стресс-тест","Тест производительности и стабильности под нагрузкой: Cinebench, 3DMark, OCCT.","Benchmark / stress test","Performance and stability test under load: Cinebench, 3DMark, OCCT."],
+[S,"Драйвер","Программа, позволяющая системе управлять устройством. Свежий драйвер видеокарты улучшает игры.","Driver","Software letting the OS control a device. A fresh GPU driver improves games."],
+[S,"Secure Boot / TPM","Защита загрузки и хранение ключей шифрования. Нужны для Windows 11.","Secure Boot / TPM","Boot protection and encryption key storage. Required for Windows 11."],
+[S,"Режим питания","План Windows (экономия / баланс / максимум), влияющий на частоты и нагрев.","Power plan","A Windows profile (saver / balanced / max) affecting clocks and heat."],
+[S,"Игровой режим","Режим Windows, отдающий приоритет игре и ограничивающий фоновые задачи.","Game Mode","A Windows mode that prioritizes the game and limits background tasks."],
+[S,"Сенса (sens)","Внутриигровая чувствительность мыши. Вместе с DPI определяет скорость прицела.","In-game sensitivity (sens)","The game's mouse sensitivity. Together with DPI it sets crosshair speed."]
+];
+var R=T.map(function(t,i){return {c:t[0],rt:t[1],rd:t[2],et:TT[t[1]]||t[1],ed:E[i]}}).concat(P.map(function(p){return {c:p[0],rt:p[1],rd:p[2],et:p[3],ed:p[4]}}));
+var CO=["Основы","Структуры данных","Java и ООП","Игры","Веб и сети","Инструменты","Практики","Мобайл",H,S];
+var CN={"Основы":"Basics","Структуры данных":"Data structures","Java и ООП":"Java & OOP","Игры":"Games","Веб и сети":"Web & networks","Инструменты":"Tools","Практики":"Practices","Мобайл":"Mobile"};
+CN[H]="PC hardware";CN[S]="PC settings";
+var UI={
+ru:{title:"relativity-I — разработчик и автор KrackenTap",tag:"@relativity-I · GitHub с ноября 2026",sub:"Пишу игры на Java. Автор «лучшей игры 2026 года» про тапы по Кракену.",b1:"Смотреть KrackenTap",b2:"Мой GitHub",b3:"Словарик",projT:"Проекты",projD:"Лучшая игра 2026 года про то, как тапать Кракена. Просто, быстро и затягивает.",open:"Открыть репозиторий →",st1:"репозиторий",st2:"основной язык",st3:"терминов в словарике",glT:"Словарик программиста и ПК",ph:"Поиск по терминам…",no:"Ничего не найдено. Попробуйте другой запрос.",all:"Все"},
+en:{title:"relativity-I — developer, author of KrackenTap",tag:"@relativity-I · on GitHub since Nov 2026",sub:"I make games in Java. Author of the “best game of 2026” about tapping the Kraken.",b1:"View KrackenTap",b2:"My GitHub",b3:"Glossary",projT:"Projects",projD:"The best game of 2026 about tapping the Kraken. Simple, fast and addictive.",open:"Open repository →",st1:"repository",st2:"main language",st3:"glossary terms",glT:"Programmer & PC glossary",ph:"Search terms…",no:"Nothing found. Try another query.",all:"All"}
+};
+var lang=(navigator.language||"ru").slice(0,2)=="ru"?"ru":"en";
+try{var sv=localStorage.getItem("lang");if(sv=="ru"||sv=="en")lang=sv}catch(e){}
+var cur="all",q=document.getElementById("q"),g=document.getElementById("g"),f=document.getElementById("f"),no=document.getElementById("no");
+document.getElementById("n").textContent=R.length;
+function render(){
+  var s=q.value.toLowerCase(),h="",n=0,u=UI[lang],ru=lang=="ru";
+  R.forEach(function(t){
+    if((cur=="all"||t.c==cur)&&(t.rt+" "+t.rd+" "+t.et+" "+t.ed).toLowerCase().indexOf(s)>-1){
+      n++;h+='<div class="t"><em>'+(ru?t.c:CN[t.c])+'</em><h4>'+(ru?t.rt:t.et)+'</h4><p>'+(ru?t.rd:t.ed)+'</p></div>';
+    }
+  });
+  g.innerHTML=h;no.style.display=n?"none":"block";
+  f.innerHTML="";
+  ["all"].concat(CO).forEach(function(c){
+    var b=document.createElement("button");
+    var cnt=c=="all"?R.length:R.filter(function(x){return x.c==c}).length;
+    b.textContent=(c=="all"?u.all:(ru?c:CN[c]))+" "+cnt;
+    if(c==cur)b.className="on";
+    b.onclick=function(){cur=c;render()};
+    f.appendChild(b);
+  });
+}
+function setLang(l){
+  lang=l;try{localStorage.setItem("lang",l)}catch(e){}
+  document.documentElement.lang=l;document.title=UI[l].title;
+  document.querySelectorAll("[data-i]").forEach(function(el){el.textContent=UI[l][el.getAttribute("data-i")]});
+  q.placeholder=UI[l].ph;no.textContent=UI[l].no;
+  document.querySelectorAll(".lang button").forEach(function(b){b.className=b.getAttribute("data-l")==l?"on":""});
+  render();
+}
+document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-l"))}});
+q.oninput=render;setLang(lang);
+</script>
+</body>
+</html>
