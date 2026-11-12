@@ -55,17 +55,32 @@ footer a{color:var(--acc)}
 .lang{display:flex;gap:4px}
 .lang button{font:700 12px inherit;font-family:inherit;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:5px 11px;cursor:pointer}
 .lang button.on{background:#fff;color:var(--hero1)}
+
+.card,.t{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover,.t:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(18,33,46,.12)}
+.t{animation:up .7s both cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+header .w>*{animation:up .9s both cubic-bezier(.2,.8,.2,1)}
+header .w>*:nth-child(2){animation-delay:.1s}header .w>*:nth-child(3){animation-delay:.2s}header .w>*:nth-child(4){animation-delay:.3s}
+.f button,input{transition:all .35s cubic-bezier(.2,.8,.2,1)}
+/* liquid glass: only GitHub button + language switch */
+a.b.p{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.55);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -1px 0 rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.22);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .45s}
+a.b.p:hover{background:rgba(255,255,255,.3);transform:translateY(-2px) scale(1.03)}
+.lang{padding:4px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 20px rgba(0,0,0,.2)}
+.lang button{border:0;background:transparent;border-radius:99px;padding:6px 13px;transition:all .4s cubic-bezier(.2,.8,.2,1)}
+.lang button.on{background:rgba(255,255,255,.88);color:var(--hero1);box-shadow:inset 0 1px 0 #fff,0 3px 10px rgba(0,0,0,.2)}
+@media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <header><div class="w">
-<div class="top"><span class="tag" data-i="tag"></span><div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div></div>
+<div class="top"><span class="tag" data-i="tag"></span><div class="lang"><button data-l="en">EN</button><button data-l="ru">RU</button></div></div>
 <h1>relativity-I</h1>
 <p data-i="sub"></p>
 <div class="cta">
-<a class="b p" href="https://github.com/relativity-I/KrackenTap" data-i="b1"></a>
-<a class="b s" href="https://github.com/relativity-I" data-i="b2"></a>
-<a class="b s" href="#gloss" data-i="b3"></a>
+<a class="b p" href="https://github.com/relativity-I" data-i="b2"></a>
 </div>
 </div></header>
 
@@ -312,15 +327,14 @@ var UI={
 ru:{title:"relativity-I — разработчик и автор KrackenTap",tag:"@relativity-I · GitHub с ноября 2026",sub:"Пишу игры на Java. Автор «лучшей игры 2026 года» про тапы по Кракену.",b1:"Смотреть KrackenTap",b2:"Мой GitHub",b3:"Словарик",projT:"Проекты",projD:"Лучшая игра 2026 года про то, как тапать Кракена. Просто, быстро и затягивает.",open:"Открыть репозиторий →",st1:"репозиторий",st2:"основной язык",st3:"терминов в словарике",glT:"Словарик программиста и ПК",ph:"Поиск по терминам…",no:"Ничего не найдено. Попробуйте другой запрос.",all:"Все"},
 en:{title:"relativity-I — developer, author of KrackenTap",tag:"@relativity-I · on GitHub since Nov 2026",sub:"I make games in Java. Author of the “best game of 2026” about tapping the Kraken.",b1:"View KrackenTap",b2:"My GitHub",b3:"Glossary",projT:"Projects",projD:"The best game of 2026 about tapping the Kraken. Simple, fast and addictive.",open:"Open repository →",st1:"repository",st2:"main language",st3:"glossary terms",glT:"Programmer & PC glossary",ph:"Search terms…",no:"Nothing found. Try another query.",all:"All"}
 };
-var lang=(navigator.language||"ru").slice(0,2)=="ru"?"ru":"en";
-try{var sv=localStorage.getItem("lang");if(sv=="ru"||sv=="en")lang=sv}catch(e){}
+var lang="en";
 var cur="all",q=document.getElementById("q"),g=document.getElementById("g"),f=document.getElementById("f"),no=document.getElementById("no");
 document.getElementById("n").textContent=R.length;
 function render(){
   var s=q.value.toLowerCase(),h="",n=0,u=UI[lang],ru=lang=="ru";
   R.forEach(function(t){
     if((cur=="all"||t.c==cur)&&(t.rt+" "+t.rd+" "+t.et+" "+t.ed).toLowerCase().indexOf(s)>-1){
-      n++;h+='<div class="t"><em>'+(ru?t.c:CN[t.c])+'</em><h4>'+(ru?t.rt:t.et)+'</h4><p>'+(ru?t.rd:t.ed)+'</p></div>';
+      n++;h+='<div class="t" style="animation-delay:'+Math.min(n,14)*35+'ms"><em>'+(ru?t.c:CN[t.c])+'</em><h4>'+(ru?t.rt:t.et)+'</h4><p>'+(ru?t.rd:t.ed)+'</p></div>';
     }
   });
   g.innerHTML=h;no.style.display=n?"none":"block";
@@ -335,7 +349,7 @@ function render(){
   });
 }
 function setLang(l){
-  lang=l;try{localStorage.setItem("lang",l)}catch(e){}
+  lang=l;
   document.documentElement.lang=l;document.title=UI[l].title;
   document.querySelectorAll("[data-i]").forEach(function(el){el.textContent=UI[l][el.getAttribute("data-i")]});
   q.placeholder=UI[l].ph;no.textContent=UI[l].no;
@@ -344,6 +358,8 @@ function setLang(l){
 }
 document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-l"))}});
 q.oninput=render;setLang(lang);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll(".proj,.stats,h2,.bar").forEach(function(x){x.classList.add("rv");io.observe(x)});
 </script>
 </body>
 </html>
